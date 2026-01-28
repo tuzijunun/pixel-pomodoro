@@ -1,0 +1,108 @@
+/* 全屏样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-select: none; /* 防止文本被选中 */
+    -moz-user-select: none;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    background-color: #000000;
+    touch-action: none; /* 防止触摸默认行为 */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0c0c1a 0%, #1a1a2e 100%);
+    color: #ffffff;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+h1 {
+    font-size: clamp(20px, 3vw, 32px);
+    margin-bottom: 5px;
+    color: #4fc3f7;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+p {
+    font-size: clamp(12px, 1.5vw, 16px);
+    margin-bottom: 10px;
+    color: #a0a0c0;
+    max-width: 600px;
+}
+
+#game-container {
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    border: none;
+    background-color: transparent;
+    cursor: default;
+}
+
+/* 游戏内文本不可选中 */
+#game-container * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* 全屏时的样式 */
+:fullscreen #game-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+:-webkit-full-screen #game-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+:-moz-full-screen #game-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .container {
+        padding: 5px;
+    }
+    
+    h1 {
+        font-size: 18px;
+    }
+    
+    p {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+}
+
+/* 防止长按弹出菜单 */
+#game-container {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>可拖动番茄钟</title>
+    
+    <!-- 像素字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- 样式 -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phaser游戏引擎 -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+    
+    <!-- 移动端优化 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 阻止默认触摸行为
+            document.addEventListener('touchstart', function(event) {
+                if (event.touches.length > 1) {
+                    event.preventDefault();
+                }
+            }, { passive: false });
+            
+            // 阻止手势缩放
+            document.addEventListener('gesturestart', function(event) {
+                event.preventDefault();
+            });
+            
+            // 防止长按弹出菜单
+            document.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>⏰ 可拖动番茄钟</h1>
+        <p>设置时间 → 开始计时 → 面板自动隐藏 | 拖动倒计时调整位置</p>
+        
+        <!-- 游戏容器 -->
+        <div id="game-container"></div>
+        
+        <!-- 操作说明 -->
+        <div style="margin-top: 10px; font-size: 12px; color: #666; max-width: 500px;">
+            <p>💡 提示：点击开始后设置面板会自动隐藏，暂停或结束时重新显示</p>
+            <p>💡 拖动倒计时数字可以调整位置，让界面更美观</p>
+            <p>💡 按F11或点击"进入全屏"获得最佳体验</p>
+        </div>
+    </div>
+    
+    <!-- 游戏逻辑 -->
+    <script src="game.js"></script>
+</body>
+</html>
